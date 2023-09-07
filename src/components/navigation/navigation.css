@@ -1,0 +1,40 @@
+:root {
+    --main_theme: #5f3f32;
+    --active_element: #49352e;
+}
+
+@media (max-width: 820px) {
+    .navigation-menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background-color: var(--main_theme);
+    }
+    .navigation-burger-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 32px;
+        height: 32px;
+        background: none;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        z-index: 3;
+        filter: brightness(100%);
+    }
+    .burger-btn-icons {
+        border-radius: 10px;
+        width: 32px;
+        height: 4px;
+        background-color: white;
+        transition: all 0.3s linear;
+        transform-origin: 1px;
+    }
+    .navigation-header {
+        color: white;
+        padding: 0px 20px;
+        font-family: 'Handlee', serif;
+    }
+}
