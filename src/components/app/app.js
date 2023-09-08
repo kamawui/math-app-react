@@ -1,9 +1,9 @@
 import './app.css';
 import React, {Component} from "react";
 import Navigation from "../navigation/navigation";
-import QuadraticEquationTab from "../quadratic-equation-tab/quadraticEquationTab";
-import BQuadraticEquationTab from "../b-quadratic-equation-tab/bQuadraticEquationTab";
-import TrigonometryEquationTab from "../trigonometry-equation-tab/trigonometryEquationTab";
+import QuadraticEquationTab from "../burger-tabs/quadratic-equation-tab/quadraticEquationTab";
+import BQuadraticEquationTab from "../burger-tabs/b-quadratic-equation-tab/bQuadraticEquationTab";
+import TrigonometryEquationTab from "../burger-tabs/trigonometry-equation-tab/trigonometryEquationTab";
 import BurgerMenu from "../burger-menu/burgerMenu";
 
 class App extends Component {

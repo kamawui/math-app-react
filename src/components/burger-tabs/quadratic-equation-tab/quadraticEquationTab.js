@@ -9,9 +9,9 @@ class QuadraticEquationTab extends Component {
             tag:"quadratic_equations",
             equation: {
                 values: {
-                    a: null,
-                    b: null,
-                    c: null,
+                    a: "",
+                    b: "",
+                    c: "",
                 },
                 operations: {
                     first: "+",
@@ -107,20 +107,16 @@ class QuadraticEquationTab extends Component {
 
             let D = b**2 - 4 * a * c;
 
+            let roots = this.findRoots(D, a, b);
+
             let answer = "";
 
-            if (D === 0) {
-                let x = (((-1 * b) + Math.sqrt(D)) / (2 * a)).toFixed(2);
-
-                answer = `x = ${x}`;
-
-            } else if (D > 0) {
-                let x1 = (((-1 * b) + Math.sqrt(D)) / (2 * a)).toFixed(2);
-                let x2 = (((-1 * b) - Math.sqrt(D)) / (2 * a)).toFixed(2);
-
-                answer = `x₁ = ${x1}, x₂ = ${x2}`;
-            } else {
+            if (roots.length === 0) {
                 answer = "no roots";
+            } else if (roots.length === 2) {
+                answer = `x₁ = ${roots[0]}, x₂ = ${roots[1]}`
+            } else {
+                answer = `x = ${roots[0]}`
             }
 
             this.setState(({equation}) => {
@@ -131,8 +127,48 @@ class QuadraticEquationTab extends Component {
         }
     }
 
+    findRoots = (D, a, b) => {
+        if (D === 0) {
+            let x = (((-1 * b) + Math.sqrt(D)) / (2 * a)).toFixed(2);
+
+            return [x];
+
+        } else if (D > 0) {
+            let x1 = (((-1 * b) + Math.sqrt(D)) / (2 * a)).toFixed(2);
+            let x2 = (((-1 * b) - Math.sqrt(D)) / (2 * a)).toFixed(2);
+
+            return [x1, x2];
+        } else {
+            return [];
+        }
+    }
+
+    clearEquation = () => {
+        const {equation:{values:{a,b,c}}} = this.state;
+        this.setState(({equation}) => {
+            return (
+                equation.values.a = ""
+            )
+        });
+        this.setState(({equation}) => {
+            return (
+                equation.values.b = ""
+            )
+        });
+        this.setState(({equation}) => {
+            return (
+                equation.values.c = ""
+            )
+        });
+        this.setState(({equation}) => {
+            return (
+                equation.answer = ""
+            )
+        });
+    }
+
     render() {
-        const {title, tag, equation, activeEquationTab} = this.state;
+        const {title, tag, equation:{values:{a,b,c}}, activeEquationTab, equation} = this.state;
         const {activeTab} = this.props;
         const menuClasses = activeTab === tag ? "quadratic-equation-menu" : "quadratic-equation-menu hidden";
 
@@ -151,7 +187,6 @@ class QuadraticEquationTab extends Component {
                 </div>
                 <div className="equation-tab">
                     <div className={`equation-calculation ${activeEquationTab === "calculator" ? "" : "hidden-tab"}`}>
-                        {/*<h2 className="menu-title">Calculate your equation</h2>*/}
                         <p className="description">Description: this online calculator is a quadratic equation solver that will solve a second-order
                             polynomial equation such as ax² + bx + c = 0 for x, where a ≠ 0</p>
                         <div className="form-wrapper">
@@ -174,19 +209,19 @@ class QuadraticEquationTab extends Component {
                             <form className="values-form">
                                 <div>
                                     <label>a = </label>
-                                    <input type="number" onChange={this.onAChange}/>
+                                    <input type="number" value={a} onChange={this.onAChange}/>
                                 </div>
                                 <div>
                                     <label>b = </label>
-                                    <input type="number" onChange={this.onBChange}/>
+                                    <input type="number" value={b} onChange={this.onBChange}/>
                                 </div>
                                 <div>
                                     <label>c = </label>
-                                    <input type="number" onChange={this.onCChange}/>
+                                    <input type="number" value={c} onChange={this.onCChange}/>
                                 </div>
                             </form>
                             <div className="form-buttons">
-                                <button className="form-button">Clear</button>
+                                <button className="form-button" onClick={() => this.clearEquation()}>Clear</button>
                                 <button className="form-button" onClick={() => this.calculateEquation()}>Calculate</button>
                             </div>
                             <div className="equation-result">
@@ -198,7 +233,6 @@ class QuadraticEquationTab extends Component {
                         <h2 className="menu-title">Theory</h2>
                     </div>
                 </div>
-
             </div>
         );
     }
