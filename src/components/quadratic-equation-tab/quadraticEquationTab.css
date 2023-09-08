@@ -6,19 +6,91 @@
         background-color: var(--content);
         height: 100vh;
         width: 100vw;
-        position: fixed;
         font-family: 'Play', sans-serif;
     }
+    .tab-buttons {
+        width: 80vw;
+        margin: 40px 0 0;
+    }
+    .tab-button {
+        height: 4vh;
+        background-color: var(--button);
+        border: 2px solid var(--content) ;
+        outline: none;
+        margin-right: 2px;
+        border-radius: 10% 25% 0 0;
+        font-family: 'Handlee', serif;
+        font-weight: 800;
+    }
+    .hidden-tab {
+        display: none;
+    }
+    .active-tab-btn {
+        border: none;
+        background-color: var(--container);
+    }
+    .equation-tab {
+        background-color: var(--container);
+        width: 80vw;
+    }
+    .description {
+        text-align: left;
+        width: 70vw;
+        margin: 40px auto;
+    }
+    .operation-first, .operation-second {
+        margin: 0 5px;
+    }
+    .form-wrapper {
+        width: 70vw;
+        margin: 30px auto;
+        background-color: white;
+        padding-bottom: 40px;
+        border-radius: 20px;
+    }
+    .form-header {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: red;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        color: var(--content);
+    }
+    .equation-form {
+        margin: 20px 0;
+    }
+    .values-form {
+        margin: 20px 0;
+    }
+    .values-form div {
+        margin: 5px;
+    }
+    .values-form input {
+        width: 80px;
+    }
+    .form-buttons {
+        margin: 40px auto 0;
+        width: 60vw;
+        display: flex;
+        justify-content: space-around;
+    }
+    .equation-result {
+        margin: 20px auto 0;
+        width: 60vw;
+    }
+    .form-button {
+        height: 30px;
+    }
     .menu-title {
-        padding: 50px 0;
+        padding: 10px 0;
     }
     .equation-calculation  {
         text-align: center;
     }
-    .equation-calculation span {
-        font-size: 25px;
-    }
-    input[type=number] {
-        width: 20px;
+    .equation-theory {
+        text-align: center;
     }
 }

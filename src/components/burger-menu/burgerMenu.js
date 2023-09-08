@@ -11,13 +11,16 @@ class BurgerMenu extends Component {
     }
 
     render() {
-        const {open, burgerMenuLinks, activeTab} = this.props;
+        const {open, burgerMenuLinks, activeTab, setActiveTab, closeMenu} = this.props;
 
         const listLinks = burgerMenuLinks.map(item => {
             const listItemClasses = activeTab === this.convertTitleToTag(item) ? "list-item active" : "list-item";
 
             return (
-                <li className={listItemClasses}><span>{item}</span></li>
+                <li className={listItemClasses} onClick={() => {
+                    setActiveTab(this.convertTitleToTag(item));
+                    closeMenu();
+                }}><span>{item}</span></li>
             )
         });
 

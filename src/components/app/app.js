@@ -1,7 +1,9 @@
 import './app.css';
 import React, {Component} from "react";
 import Navigation from "../navigation/navigation";
-import QuadraticEquationTab from "../quadraticEquationTab/quadraticEquationTab";
+import QuadraticEquationTab from "../quadratic-equation-tab/quadraticEquationTab";
+import BQuadraticEquationTab from "../b-quadratic-equation-tab/bQuadraticEquationTab";
+import TrigonometryEquationTab from "../trigonometry-equation-tab/trigonometryEquationTab";
 import BurgerMenu from "../burger-menu/burgerMenu";
 
 class App extends Component {
@@ -9,7 +11,7 @@ class App extends Component {
         super(props);
         this.state = {
             isMenuOpen: false,
-            burgerMenuLinks: ["Quadratic Equations"],
+            burgerMenuLinks: ["Quadratic Equations", "Biquadratic Equations", "Trigonometry Equations"],
             activeElement: "quadratic_equations",
         }
     }
@@ -17,6 +19,12 @@ class App extends Component {
     setOpen = () => {
         this.setState({
             isMenuOpen: !this.state.isMenuOpen
+        })
+    }
+
+    closeMenu = () => {
+        this.setState({
+            isMenuOpen: false
         })
     }
 
@@ -29,12 +37,15 @@ class App extends Component {
 
         return (
             <div className="app-wrapper">
-                <div className="app-overlay"onClick={() => isMenuOpen ? this.setOpen() : null}>
+                <div className="app-overlay" onClick={() => isMenuOpen ? this.setOpen() : null}>
                     <Navigation open={isMenuOpen} setOpen={this.setOpen}/>
-                    <QuadraticEquationTab activeTab={activeElement} setActiveTab={this.setActiveTab}/>
+                    <QuadraticEquationTab activeTab={activeElement}/>
+                    <BQuadraticEquationTab activeTab={activeElement}/>
+                    <TrigonometryEquationTab activeTab={activeElement}/>
                 </div>
 
-                <BurgerMenu open={isMenuOpen} burgerMenuLinks={burgerMenuLinks} activeTab={activeElement}/>
+                <BurgerMenu open={isMenuOpen} burgerMenuLinks={burgerMenuLinks} activeTab={activeElement}
+                            setActiveTab={this.setActiveTab} closeMenu={this.closeMenu}/>
             </div>
         );
     }

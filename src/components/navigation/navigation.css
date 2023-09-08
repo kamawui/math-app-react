@@ -1,9 +1,9 @@
-:root {
-    --main_theme: #5f3f32;
-    --active_element: #49352e;
-}
-
 @media (max-width: 820px) {
+    /*.navigation-wrapper {*/
+    /*    position: sticky;*/
+    /*    top: 0;*/
+    /*    width: 100%;*/
+    /*}*/
     .navigation-menu {
         display: flex;
         align-items: center;
@@ -21,20 +21,20 @@
         outline: none;
         border: none;
         cursor: pointer;
-        z-index: 3;
+        z-index: 4;
         filter: brightness(100%);
     }
     .burger-btn-icons {
         border-radius: 10px;
         width: 32px;
         height: 4px;
-        background-color: white;
         transition: all 0.3s linear;
         transform-origin: 1px;
+        background-color: var(--content);
     }
     .navigation-header {
-        color: white;
-        padding: 0px 20px;
+        color: var(--content);
+        padding: 0 20px;
         font-family: 'Handlee', serif;
     }
 }

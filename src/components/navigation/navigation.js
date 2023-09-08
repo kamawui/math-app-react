@@ -1,5 +1,4 @@
 import './navigation.css';
-import BurgerIcon from "../icons-svg/burger-icon";
 import React, {Component} from "react";
 
 class Navigation extends Component {
@@ -29,7 +28,7 @@ class Navigation extends Component {
                         <div className="burger-btn-icons" style={{transform: `${thirdBurgerButtonChildTransform}`}}>
                         </div>
                     </button>
-                    <h2 className="navigation-header">Math</h2>
+                    <h2 className="navigation-header">ForCh</h2>
                 </div>
             </div>
 
